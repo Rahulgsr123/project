@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: black;
+            padding: 15px 50px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00d1d1;
+            transition: color 0.3s ease;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #00d1d1;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: white;
+        }
+
+        /* Hamburger icon */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 21px;
+            width: 30px;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            height: 3px;
+            background-color: white;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 10px;
+                align-items: flex-start;
+            }
+
+            .header-content {
+                width: 100%;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+                display: none; /* Hidden by default */
+                margin-top: 10px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: left;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+
+            .hamburger {
+                display: flex; /* Show hamburger on small screens */
+                position: absolute;
+                right: 20px;
+            }
+        }
+
+        @media screen and (min-width: 769px) {
+            header {
+                padding: 10px 50px;
+            }
+
+            nav ul {
+                flex-direction: row;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .hamburger {
+                display: none; /* Hide hamburger on large screens */
+            }
+        }
+      * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slideshow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: white;
+    margin-bottom: 5px;
+}
+
+input, select, button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    background: aqua;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 24px;
+    }
+
+    .search-form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+}
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Centering the Section */
+.welcome-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 70vh;
+    padding: 20px;
+    background: #fff;
+}
+
+/* Heading Styles */
+h1 {
+    font-size: 40px;
+    font-weight: bold;
+    color: #555;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #444;
+    margin-top: 10px;
+}
+
+/* Paragraph */
+p {
+    font-size: 16px;
+    color: #666;
+    max-width: 700px;
+    margin-top: 15px;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: black;
+    color: aqua;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: aqua;
+    color: black;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 14px;
+        max-width: 90%;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+.child2 {
+            text-align: center;
+            margin-top: 3vh;
+        }
+        
+        hr {
+            text-align: center;
+            width: 10%;
+        }
+
+        .child3 {
+            width: 90%;
+            max-width: 300px;
+            padding: 5%;
+            margin: 20px auto;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .child3:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        i {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+
+.apartments-suites {
+    text-align: center;
+    padding: 50px;
+    background-color: white;
+}
+
+.room {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;  
+    padding: 20px;
+    gap: 20%;
+}
+
+.room img {
+    width: 400px;
+    border-radius: 10px;
+    margin: 10px;
+}
+.room div {
+    text-align: left;
+}
+
+.room button {
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: black;
+    color: aqua;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.room button:hover {
+    background-color: aqua;
+    color: black;
+}
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Centering the Section */
+.subscribe-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 60vh;
+    padding: 20px;
+    background: #f4f4f4;
+}
+
+/* Heading */
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Description */
+p {
+    font-size: 16px;
+    color: #666;
+    max-width: 600px;
+    margin: 10px 0;
+}
+
+/* Underline */
+.underline {
+    width: 50px;
+    height: 2px;
+    background: #666;
+    margin: 10px auto 20px;
+}
+
+/* Form Container */
+.subscribe-form {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 50px;
+    padding: 5px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    max-width: 90%;
+}
+
+/* Input Field */
+.subscribe-form input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 50px 0 0 50px;
+    color: #333;
+}
+
+/* Submit Button */
+.subscribe-form button {
+    background: black;
+    color: aqua;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.subscribe-form button:hover {
+    background: aqua;
+    color: black;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 14px;
+        max-width: 90%;
+    }
+
+    .subscribe-form {
+        width: 90%;
+    }
+
+    .subscribe-form input {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .subscribe-form button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+.room-booking {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.room-booking h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.room-booking p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.booking-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-group input, 
+.form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+.book-now {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: black;
+    color: aqua;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.book-now:hover {
+    background-color: aqua;
+    color: black;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .booking-form {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: span 1;
+    }
+}
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Centering the Section */
+.call-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 60vh;
+    padding: 20px;
+    background: #f4f4f4;
+}
+
+/* Heading */
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Description */
+p {
+    font-size: 16px;
+    color: #666;
+    max-width: 600px;
+    margin: 10px 0;
+}
+
+/* Underline */
+.underline {
+    width: 50px;
+    height: 2px;
+    background: #666;
+    margin: 10px auto 20px;
+}
+
+/* Call Button */
+.call-button {
+    display: inline-block;
+    background: black;
+    color: aqua;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+.call-button:hover {
+    background: aqua;
+    color: black;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 14px;
+        max-width: 90%;
+    }
+
+    .call-button {
+        font-size: 18px;
+        padding: 12px 30px;
+    }
+}
+footer {
+        background: #222;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      .social-icons {
+        margin-bottom: 10px;
+      }
+
+      .social-icons a {
+        display: inline-block;
+        margin: 0 10px;
+      }
+
+      .social-icons img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #00d1d1;
+        padding: 10px;
+      }
+
+      .footer-nav {
+        margin-bottom: 10px;
+      }
+
+      .footer-nav a {
+        color: #00d1d1;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 0 10px;
+      }
+
+      .footer-nav a:hover {
+        text-decoration: underline;
+      }
+
+      .copyright {
+        color: gray;
+        font-size: 14px;
+      }
+
+      .copyright a {
+        color: #00d1d1;
+        text-decoration: none;
+      }
+
+      .copyright a:hover {
+        text-decoration: underline;
+      }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">LOFT <span>City</span></div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about us.html">ABOUT US</a></li>
+                <li><a href="apartments.html">APARTMENTS</a></li>
+                <li><a href="amenities.html">AMENITIES</a></li>
+                <li><a href="bookings.html">BOOKING</a></li>
+                <li><a href="login.html">LOGIN</a></li>
+                <li><a href="contactus.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="slideshow">
+            <div class="slide active" style="background-image: url('https://demo.htmlcodex.com/178/loft-city/img/slider/header-slider-2.jpg');"></div>
+            <div class="slide active" style="background-image: url('https://demo.htmlcodex.com/178/loft-city/img/slider/header-slider-3.jpg');"></div>
+            <div class="slide " style="background-image: url('https://demo.htmlcodex.com/178/loft-city/img/slider/header-slider-1.jpg');"></div>
+        </div>
+    
+        <div class="hero-content">
+            <h1 style="color: whitesmoke;">Feel at Home When You're Away</h1>
+            <form class="search-form">
+                <div class="form-group">
+                    <label style="color: white;">Check-In</label>
+                    <input type="date">
+                </div>
+                <div class="form-group">
+                    <label style="color: white;">Check-Out</label>
+                    <input type="date">
+                </div>
+                <div class="form-group">
+                    <label style="color: white;">Adult</label>
+                    <select>
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4+</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label style="color: white;">Kid</label>
+                    <select>
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4+</option>
+                    </select>
+                </div>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </section>
+    <div class="new" style="background-color: rgb(245, 250, 250);">
+    <section class="welcome-section">
+        <h1>WELCOME TO LOFT CITY</h1>
+        <h2>Urban Holiday Apartments in San Francisco</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas gravida sollicitudin turpis id posuere.
+            Fusce nec rhoncus nibh. Fusce arcu libero, euismod eget commodo at, venenatis a nisi. Sed faucibus metus sed leo vulputate blandit.
+        </p>
+        <a href="#" class="btn">Book Now</a>
+    </section>
+    <div class="child2">
+        <h1>Amenities & Services</h1>
+        <center><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in mi libero.</p></center>
+    </div>
+    <center>
+        <hr/>
+    </center>
+    
+    <section class="amenities-grid">
+        <div class="child3"><i class="fa fa-podcast"></i><h3>Podcast</h3></div>
+        <div class="child3"><i class="fa fa-bath"></i><h3>Bath Tub</h3></div>
+        <div class="child3"><i class="fa fa-shower"></i><h3>Shower</h3></div>
+        <div class="child3"><i class="fa fa-television"></i><h3>Television</h3></div>
+        <div class="child3"><i class="fa fa-wifi"></i><h3>WiFi</h3></div>
+        <div class="child3"><i class="fa fa-phone"></i><h3>Telephone</h3></div>
+        <div class="child3"><i class="fa fa-beer"></i><h3>Mini Bar</h3></div>
+        <div class="child3"><i class="fa fa-street-view"></i><h3>Street View</h3></div>
+    </section>
+</div>
+
+<section class="apartments-suites">
+  <h2>Apartments & Suites</h2>
+  <center><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in mi libero.</p></center>
+  <div class="room">
+      <img src="https://demo.htmlcodex.com/178/loft-city/img/room/room-1.jpg" alt="Standard Single">
+      <div>
+          <h3>Standard Single</h3>
+          <p>$150 / Night</p>
+          <p>Size: 260 sq ft | Beds: 2 Single(s)</p>
+          <button>Read More</button>
+          <button>Book Now</button>
+      </div>
+  </div>
+  <div class="room">
+      <div>
+          <h3>Standard Double</h3>
+          <p>$220 / Night</p>
+          <p>Size: 260 sq ft | Beds: 2 Single(s)</p>
+          <button>Read More</button>
+          <button>Book Now</button>
+      </div>
+      <img src="https://demo.htmlcodex.com/178/loft-city/img/room/room-2.jpg" alt="Standard Double">
+  </div>
+  <div class="room">
+      <img src="https://demo.htmlcodex.com/178/loft-city/img/room/room-3.jpg" alt="Standard Single">
+      <div>
+          <h3>Premium Single</h3>
+          <p>$220/ Night</p>
+          <p>Size: 260 sq ft Beds: 2 Single(s)</p>
+          <button>Read More</button>
+          <button>Book Now</button>
+      </div>
+  </div>
+  <div class="room">
+      <div>
+          <h3>Premium Double</h3>
+          <p>$300 / Night</p>
+          <p>Size: 260 sq ft Beds: 2 Single(s)</p>
+          <button>Read More</button>
+          <button>Book Now</button>
+      </div>
+      <img src="https://demo.htmlcodex.com/178/loft-city/img/room/room-4.jpg" alt="Standard Double">
+  </div>
+  <div class="room">
+    <img src="https://demo.htmlcodex.com/178/loft-city/img/room/room-5.jpg" alt="Standard Single">
+    <div>
+        <h3>Economy Single</h3>
+        <p>$120 / Night</p>
+        <p>Size: 260 sq ft Beds: 2 Single(s)</p>
+        <button>Read More</button>
+        <button>Book Now</button>
+    </div>
+</section>
+<section class="subscribe-section">
+    <h1>Subscribe for Special Offer</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in mi libero. 
+       Quisque convallis, enim at venenatis tincidunt.</p>
+    <div class="underline"></div>
+    
+    <form class="subscribe-form">
+        <input type="email" placeholder="Enter your email here" required>
+        <button type="submit">SUBMIT</button>
+    </form>
+</section>
+  <section class="room-booking">
+    <h2>Room Booking</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in mi libero. 
+        Quisque convallis, enim at venenatis tincidunt.</p>
+  
+    <form class="booking-form">
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="E.g. John">
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="E.g. Sina">
+        </div>
+        <div class="form-group">
+            <label>Mobile</label>
+            <input type="tel" placeholder="E.g. +1 234 567 8900">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="E.g. email@example.com">
+        </div>
+        <div class="form-group">
+            <label>Check-In</label>
+            <input type="date">
+        </div>
+        <div class="form-group">
+            <label>Check-Out</label>
+            <input type="date">
+        </div>
+        <div class="form-group">
+            <label>Adult</label>
+            <select>
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4+</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Kid</label>
+            <select>
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4+</option>
+            </select>
+        </div>
+        <div class="form-group full-width">
+            <label>Special Request</label>
+            <input type="text" placeholder="E.g. Special Request">
+        </div>
+        <button type="submit" class="book-now">Book Now</button>
+    </form>
+  </section>
+  <section class="call-section">
+      <h1>Click Below to Call Us</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in mi libero. 
+         Quisque convallis, enim at venenatis tincidunt.</p>
+      <div class="underline"></div>
+      
+      <a href="tel:+12345678900" class="call-button">+1 234 567 8900</a>
+  </section>
+  <footer>
+    <div class="social-icons">
+        <a href="#"><img src="https://static.vecteezy.com/system/resources/previews/017/743/717/large_2x/instagram-icon-logo-free-png.png" alt="Instagram"></a>
+        <a href="#"><img src="https://freelogopng.com/images/all_img/1657045610twitter-icon-transparent.png" alt="Twitter"></a>
+        <a href="#"><img src="https://th.bing.com/th/id/OIP.ENIq-U2iyx2c51zh5Hv5aAAAAA?rs=1&pid=ImgDetMain" alt="Facebook"></a>
+    </div>
+    
+    <nav class="footer-nav">
+        <a href="#">Home</a> | 
+        <a href="#">About</a> | 
+        <a href="#">Terms</a> | 
+        <a href="#">Contact</a>
+    </nav>
+
+    <p class="copyright">
+        Copyright © <a href="#">www.yoursite.com</a> All Rights Reserved.
+    </p>
+</footer>
+<script>
+    function toggleMenu() {
+        const navLinks = document.querySelector('nav ul');
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    }
+</script>
+</body>
+</html>
